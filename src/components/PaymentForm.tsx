@@ -30,7 +30,7 @@ export default function PaymentForm() {
 
             const { url } = await response.json();
             window.location.href = url;
-        } catch (err: any) {
+        } catch (err) {
             setError(err.message);
         } finally {
             setLoading(false);

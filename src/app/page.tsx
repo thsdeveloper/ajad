@@ -26,8 +26,8 @@ export default function Home() {
                         <p className="text-2xl mb-6">Acampamento de Jovens e Adolescentes</p>
                         <div className="bg-white/20 backdrop-blur-md rounded-lg p-6 mb-8">
                             <p className="text-xl">
-                                "Porque os meus pensamentos não são os vossos pensamentos, nem os vossos caminhos os
-                                meus caminhos, diz o Senhor." - Isaías 55:8
+                                Porque os meus pensamentos não são os vossos pensamentos, nem os vossos caminhos os
+                                meus caminhos, diz o Senhor. - Isaías 55:8
                             </p>
                         </div>
                         <a href="#inscricao"
@@ -155,7 +155,7 @@ export default function Home() {
                             }
                         ].map((item, index) => (
                             <div key={index} className="bg-gray-50 p-6 rounded-xl">
-                                <p className="mb-4 italic">"{item.text}"</p>
+                                <p className="mb-4 italic">{item.text}</p>
                                 <p className="font-bold text-blue-900">{item.author}</p>
                             </div>
                         ))}

@@ -18,9 +18,11 @@ export async function GET(
 
         return NextResponse.json(participant)
     } catch (error) {
-        return NextResponse.json(
-            { error: 'Erro ao buscar participante' },
-        )
+        if (error instanceof Error) {
+            return NextResponse.json(
+                { error: error.message },
+            );
+        }
     }
 }
 

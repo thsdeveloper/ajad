@@ -4,23 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b255fc41-c634-4abd-b059-627f773fdd22" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/api/create-checkout-session/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/participants/[id]/payment/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/participants/[id]/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/participants/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/api/webhook/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/cancel/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/success/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/PaymentForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RegistrationForm.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/prisma.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/participant.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+    <list default="true" id="b255fc41-c634-4abd-b059-627f773fdd22" name="Changes" comment="Commit inicial">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/prisma/schema.prisma" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/participants/[id]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/participants/[id]/route.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PaymentForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PaymentForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/hooks/use-toast.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/use-toast.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,11 +66,25 @@
       <workItem from="1729712830573" duration="581000" />
       <workItem from="1729713427581" duration="20000" />
       <workItem from="1729713448736" duration="5960000" />
-      <workItem from="1729719453363" duration="3262000" />
+      <workItem from="1729719453363" duration="3941000" />
     </task>
+    <task id="LOCAL-00001" summary="Commit inicial">
+      <option name="closed" value="true" />
+      <created>1729722811254</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1729722811254</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit from Create Next App" />
+    <MESSAGE value="Commit inicial" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit inicial" />
   </component>
 </project>
