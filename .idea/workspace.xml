@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b255fc41-c634-4abd-b059-627f773fdd22" name="Changes" comment="Atualização do use toast">
+    <list default="true" id="b255fc41-c634-4abd-b059-627f773fdd22" name="Changes" comment="teste de novas funções">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/participants/[id]/payment/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/participants/[id]/payment/route.ts" afterDir="false" />
     </list>
@@ -63,7 +64,7 @@
       <workItem from="1729713427581" duration="20000" />
       <workItem from="1729713448736" duration="5960000" />
       <workItem from="1729719453363" duration="8370000" />
-      <workItem from="1729779411898" duration="752000" />
+      <workItem from="1729779411898" duration="980000" />
     </task>
     <task id="LOCAL-00001" summary="Commit inicial">
       <option name="closed" value="true" />
@@ -113,7 +114,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729740771320</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="teste de novas funções">
+      <option name="closed" value="true" />
+      <created>1729780178002</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1729780178002</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -123,6 +132,7 @@
     <MESSAGE value="Initial commit from Create Next App" />
     <MESSAGE value="Commit inicial" />
     <MESSAGE value="Atualização do use toast" />
-    <option name="LAST_COMMIT_MESSAGE" value="Atualização do use toast" />
+    <MESSAGE value="teste de novas funções" />
+    <option name="LAST_COMMIT_MESSAGE" value="teste de novas funções" />
   </component>
 </project>

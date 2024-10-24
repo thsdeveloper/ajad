@@ -6,10 +6,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
     apiVersion: '2023-10-16',
 });
 
-export async function POST(
-    request: Request,
-    { params }: { params: { id: string } }
-) {
+export async function POST(request: Request, { params }) {
     try {
         const { id } = params; // Extrair o ID diretamente dos params
 
