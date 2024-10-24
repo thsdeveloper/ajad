@@ -1,49 +1,79 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { type NextRequest } from 'next/server';
 
-export async function GET(
-    request: Request,
-    { params }: { params: { id: string } }
+// Corrige a tipagem dos parâmetros da rota
+export async function POST(
+    request: NextRequest,
+    context: { params: { id: string } }
 ) {
     try {
+        const { id } = context.params;
+
+        // Buscar participante
         const participant = await prisma.participant.findUnique({
-            where: { id: params.id }
-        })
+            where: { id }
+        });
 
         if (!participant) {
             return NextResponse.json(
                 { error: 'Participante não encontrado' },
-            )
-        }
-
-        return NextResponse.json(participant)
-    } catch (error) {
-        if (error instanceof Error) {
-            return NextResponse.json(
-                { error: error.message },
             );
         }
+
+        // ... resto do seu código do Stripe ...
+
+        return NextResponse.json({ url: session.url });
+    } catch (error) {
+        return NextResponse.json(
+            { error: error instanceof Error ? error.message : 'Erro interno' },
+        );
+    }
+}
+
+// Para as outras rotas também
+export async function GET(
+    request: NextRequest,
+    context: { params: { id: string } }
+) {
+    try {
+        const { id } = context.params;
+
+        const participant = await prisma.participant.findUnique({
+            where: { id }
+        });
+
+        if (!participant) {
+            return NextResponse.json(
+                { error: 'Participante não encontrado' },
+            );
+        }
+
+        return NextResponse.json(participant);
+    } catch (error) {
+        return NextResponse.json(
+            { error: error instanceof Error ? error.message : 'Erro interno' },
+        );
     }
 }
 
 export async function PUT(
-    request: Request,
-    { params }: { params: { id: string } }
+    request: NextRequest,
+    context: { params: { id: string } }
 ) {
     try {
-        const data = await request.json()
+        const { id } = context.params;
+        const data = await request.json();
 
         const participant = await prisma.participant.update({
-            where: { id: params.id },
+            where: { id },
             data
-        })
+        });
 
-        return NextResponse.json(participant)
+        return NextResponse.json(participant);
     } catch (error) {
-        if (error instanceof Error) {
-            return NextResponse.json(
-                { error: error.message },
-            );
-        }
+        return NextResponse.json(
+            { error: error instanceof Error ? error.message : 'Erro interno' },
+        );
     }
 }
