@@ -11,16 +11,22 @@ export async function POST(
     { params }: { params: { id: string } }
 ) {
     try {
+        const { id } = params; // Extrair o ID diretamente dos params
+
         // Buscar participante - Corrigido para MongoDB
         const participant = await prisma.participant.findUnique({
             where: {
-                id: params.id // Se você mapeou para 'id' no schema
+                id: id, // Assumindo que o 'id' está correto
+            },
+            select: {
+                email: true, // Adiciona explicitamente o campo 'email'
             },
         });
 
+
         if (!participant) {
-            return new NextResponse(
-                JSON.stringify({ error: 'Participante não encontrado' }),
+            return NextResponse.json(
+                { error: 'Participante não encontrado' },
             );
         }
 
@@ -58,22 +64,19 @@ export async function POST(
         // Atualizar participante com ID da sessão
         await prisma.participant.update({
             where: {
-                id: params.id // Se você mapeou para 'id' no schema
+                id, // Usar o id extraído diretamente
             },
             data: {
                 paymentId: session.id,
             },
         });
 
-        return new NextResponse(
-            JSON.stringify({ url: session.url }),
-        );
+        return NextResponse.json({ url: session.url }); // Usar NextResponse.json para retornar um JSON válido
     } catch (error) {
-        console.error('Erro:', error);
-        return new NextResponse(
-            JSON.stringify({
-                error: error instanceof Error ? error.message : 'Erro interno do servidor'
-            }),
+        return NextResponse.json(
+            {
+                error: error instanceof Error ? error.message : 'Erro interno do servidor',
+            },
         );
     }
 }
