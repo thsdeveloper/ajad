@@ -16,8 +16,8 @@ async function getSessionStatus(sessionId: string) {
 }
 
 export default async function SuccessPage({
-                                              searchParams,
-                                          }: {
+    searchParams,
+}: {
     searchParams: { session_id: string };
 }) {
     const sessionId = searchParams.session_id;
