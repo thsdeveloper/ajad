@@ -1,25 +1,14 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2023-10-16',
-});
-
+// Mock webhook endpoint - no longer requires Stripe
 export async function POST(request: Request) {
-    const body = await request.text();
-    const signature = request.headers.get('stripe-signature')!;
-
     try {
-        const event = stripe.webhooks.constructEvent(
-            body,
-            signature,
-            process.env.STRIPE_WEBHOOK_SECRET!
-        );
+        const body = await request.json();
 
-        if (event.type === 'checkout.session.completed') {
-            const session = event.data.object as Stripe.Checkout.Session;
-            const participantId = session.metadata?.participantId;
+        // Mock webhook payload handling
+        if (body.type === 'checkout.session.completed') {
+            const participantId = body.participantId;
 
             if (participantId) {
                 await prisma.participant.update({
@@ -31,15 +20,16 @@ export async function POST(request: Request) {
                     },
                 });
 
-                // Enviar email de confirmação
-                await sendConfirmationEmail(participantId);
+                // Mock: email confirmation would be sent here
+                console.log(`Mock: Confirmation email would be sent for participant ${participantId}`);
             }
         }
 
         return NextResponse.json({ received: true });
     } catch (error) {
         return NextResponse.json(
-            { error: error.message },
+            { error: error instanceof Error ? error.message : 'Erro interno' },
+            { status: 500 }
         );
     }
 }

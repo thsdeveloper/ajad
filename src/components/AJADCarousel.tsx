@@ -5,6 +5,7 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
+    type CarouselApi,
 } from "@/components/ui/carousel";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -55,7 +56,7 @@ const AJADCarousel = ({
     autoPlay = false,
     autoPlayInterval = 5000
 }: AJADCarouselProps) => {
-    const [api, setApi] = React.useState<any>();
+    const [api, setApi] = React.useState<CarouselApi>();
     const [current, setCurrent] = React.useState(0);
 
     useEffect(() => {
@@ -63,12 +64,26 @@ const AJADCarousel = ({
             return;
         }
 
+        const onSelect = () => {
+            setCurrent(api.selectedScrollSnap());
+        };
+
+        api.on('select', onSelect);
+        onSelect(); // Initial call
+
         if (autoPlay) {
             const interval = setInterval(() => {
-                api?.next();
+                api.scrollNext();
             }, autoPlayInterval);
-            return () => clearInterval(interval);
+            return () => {
+                clearInterval(interval);
+                api.off('select', onSelect);
+            };
         }
+
+        return () => {
+            api.off('select', onSelect);
+        };
     }, [api, autoPlayInterval, autoPlay]);
 
     const getTextAlignment = () => {
@@ -87,7 +102,6 @@ const AJADCarousel = ({
             <Carousel
                 className="w-full"
                 setApi={setApi}
-                onSelect={(api) => setCurrent(api.selectedScrollSnap())}
             >
                 <CarouselContent>
                     {slides.map((slide, index) => (

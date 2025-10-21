@@ -8,11 +8,11 @@ import AJADCarousel from "@/components/AJADCarousel";
 import Header from '@/components/Header';
 
 export default function Home() {
-    const [participant, setParticipant] = useState<Participant | null>(null);
     const [step, setStep] = useState<'registration' | 'payment'>('registration');
 
     const handleRegistrationComplete = (participantData: Participant) => {
-        setParticipant(participantData);
+        // Registration complete, move to payment step
+        console.log('Participant registered:', participantData);
         setStep('payment');
     };
 
@@ -72,7 +72,7 @@ export default function Home() {
                             {step === 'registration' ? (
                                 <RegistrationForm onComplete={handleRegistrationComplete} />
                             ) : (
-                                <PaymentForm participant={participant} />
+                                <PaymentForm />
                             )}
                         </div>
                     </div>
