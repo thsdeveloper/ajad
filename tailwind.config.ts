@@ -10,7 +10,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['var(--font-nunito)', 'sans-serif'],
+				sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
 			},
 			colors: {
 				background: 'hsl(var(--background))',
