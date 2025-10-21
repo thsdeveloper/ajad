@@ -1,54 +1,27 @@
 import { NextResponse } from 'next/server';
-import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2023-10-16',
-});
-
-export async function POST(request: Request) {
+// Mock checkout session creation - no Stripe required
+export async function POST() {
     try {
-        const { participant } = await request.json();
+        // Create a mock session
+        const mockSessionId = `mock_session_${Date.now()}`;
+        const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
 
-        const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card', 'boleto'],
-            customer_email: participant.email,
-            line_items: [
-                {
-                    price_data: {
-                        currency: 'brl',
-                        product_data: {
-                            name: 'Inscrição AJAD 2024',
-                            description: 'Acampamento de Jovens AJAD 2024',
-                        },
-                        unit_amount: 20000,
-                    },
-                    quantity: 1,
-                },
-            ],
-            mode: 'payment',
-            success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
-            metadata: {
-                participantName: participant.name,
-                participantEmail: participant.email,
-                participantPhone: participant.phone,
-                participantAge: participant.age.toString(),
-                church: participant.church,
-            },
-            payment_method_options: {
-                boleto: {
-                    expires_after_days: 1,
-                },
-            },
-            locale: 'pt-BR',
-        });
+        const successUrl = `${baseUrl}/success?session_id=${mockSessionId}`;
 
-        return NextResponse.json({ url: session.url });
+        // Mock: In a real scenario, we would create a Stripe session
+        // For now, we just return a success URL
+        return NextResponse.json({ url: successUrl });
     } catch (error) {
         if (error instanceof Error) {
             return NextResponse.json(
                 { error: error.message },
+                { status: 500 }
             );
         }
+        return NextResponse.json(
+            { error: 'Erro interno do servidor' },
+            { status: 500 }
+        );
     }
 }

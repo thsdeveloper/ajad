@@ -31,7 +31,7 @@ export default function PaymentForm() {
             const { url } = await response.json();
             window.location.href = url;
         } catch (err) {
-            setError(err.message);
+            setError(err instanceof Error ? err.message : 'Erro ao processar pagamento');
         } finally {
             setLoading(false);
         }

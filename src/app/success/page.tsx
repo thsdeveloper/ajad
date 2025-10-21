@@ -1,36 +1,19 @@
 import { redirect } from 'next/navigation';
-import Stripe from 'stripe';
-
-async function getSessionStatus(sessionId: string) {
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-        apiVersion: '2023-10-16',
-    });
-
-    try {
-        const session = await stripe.checkout.sessions.retrieve(sessionId);
-        return session;
-    } catch (error) {
-        console.error('Erro ao verificar sessão:', error);
-        return null;
-    }
-}
 
 export default async function SuccessPage({
     searchParams,
 }: {
-    searchParams: { session_id: string };
+    searchParams: Promise<{ session_id: string; participantId?: string }>;
 }) {
-    const sessionId = searchParams.session_id;
+    const params = await searchParams;
+    const sessionId = params.session_id;
 
     if (!sessionId) {
         redirect('/');
     }
 
-    const session = await getSessionStatus(sessionId);
-
-    if (!session || session.payment_status !== 'paid') {
-        redirect('/');
-    }
+    // Mock: In a real scenario, we would verify the session status with Stripe
+    // For now, we assume all mock sessions are successful
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">

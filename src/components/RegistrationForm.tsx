@@ -149,11 +149,12 @@ export function RegistrationForm({ onComplete }: RegistrationFormProps) {
 
         } catch (error) {
             console.error('Erro ao salvar participante:', error);
-            setSubmitError(error.message || 'Ocorreu um erro ao salvar seus dados. Tente novamente.');
+            const errorMessage = error instanceof Error ? error.message : 'Ocorreu um erro ao salvar seus dados. Tente novamente.';
+            setSubmitError(errorMessage);
 
             toast({
                 title: "Erro ao salvar",
-                description: error.message || 'Ocorreu um erro ao salvar seus dados. Tente novamente.',
+                description: errorMessage,
                 variant: "destructive",
             });
         } finally {
